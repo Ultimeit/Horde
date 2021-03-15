@@ -42,14 +42,16 @@ timer.Simple(5, function ()
         draw.RoundedBox(10, 0, 0, 280, 50, Color(40,40,40,200))
         if LocalPlayer():Alive() then
             local name = "Survivor"
+            local locname = name
             if LocalPlayer():GetHordeClass() then
                 name = LocalPlayer():GetHordeClass().name
+                locname = LocalPlayer():GetHordeClass().loc_name
             end
-            draw.SimpleText(name .. " | " .. math.min(99999,LocalPlayer():GetHordeMoney()) .. "$", "Trebuchet24", 150, 25, Color(255,255,255), TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
+            draw.SimpleText(locname .. " | " .. math.min(99999,LocalPlayer():GetHordeMoney()) .. "$", "Trebuchet24", 150, 25, Color(255,255,255), TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
             surface.SetDrawColor(255, 255, 255, 255) -- Set the drawing color
             local mat = Material("materials/" .. name .. ".png", "mips smooth")
             surface.SetMaterial(mat) -- Use our cached material
-            surface.DrawTexturedRect(140 - 40 - string.len(name) * 7 - 25, 5, 40, 40)
+            surface.DrawTexturedRect(140 - 40 - string.len(locname) * 7 - 25, 5, 40, 40)
         else
             draw.SimpleText("Spectating", "Trebuchet24", 150, 25, Color(255,255,255), TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
         end

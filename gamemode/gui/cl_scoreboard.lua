@@ -43,8 +43,8 @@ function scoreboard:show()
 
     for _, ply in ipairs(player.GetAll()) do
         if not ply:IsValid() then goto cont end
-        local class = "Survivor"
-        if ply:GetHordeClass() then class = ply:GetHordeClass().name end
+        local class, loc_class = "Survivor"
+        if ply:GetHordeClass() then class, loc_class = ply:GetHordeClass().name, ply:GetHordeClass().loc_name end
 
         local list = lists:Add("DPanel")
         list:SetSize(lists:GetWide(), 45)
@@ -61,7 +61,7 @@ function scoreboard:show()
             local mat = Material("materials/" .. class .. ".png", "mips smooth")
             surface.SetMaterial(mat) -- Use our cached material
             surface.DrawTexturedRect(200, 2, 38, 38)
-            draw.DrawText(class, "Content", 250, 11, Color(255, 255, 255, 200), TEXT_ALIGN_LEFT )
+            draw.DrawText(loc_class, "Content", 250, 11, Color(255, 255, 255, 200), TEXT_ALIGN_LEFT )
             draw.DrawText(tostring(ply:Frags()), "Content", 871, 11, Color(255, 255, 255, 200), TEXT_ALIGN_CENTER )
             draw.DrawText(tostring(ply:Deaths()), "Content", 921, 11, Color(255, 255, 255, 200), TEXT_ALIGN_CENTER )
             draw.DrawText(tostring(ply:Ping()), "Content", 971, 11, Color(255, 255, 255, 200), TEXT_ALIGN_CENTER)

@@ -27,6 +27,7 @@ end
 function PANEL:SetData(class, description_panel)
     self.class = class
     self.name = class.name
+    self.loc_name = class.loc_name
     self.description = class.description
     self.description_panel = description_panel
 
@@ -61,7 +62,7 @@ function PANEL:Paint()
 
         surface.SetTextColor(Color(255,255,255))
         surface.SetTextPos(10, self:GetTall() / 2 - 10)
-        surface.DrawText(self.name)
+        surface.DrawText(self.loc_name)
 
         surface.SetDrawColor(255, 255, 255, 255) -- Set the drawing color
         local mat = Material("materials/" .. self.name .. ".png", "mips smooth")

@@ -279,7 +279,7 @@ function PANEL:Paint(w, h)
     draw.RoundedBox(0, 0, 0, w, h, HORDE.color_hollow)
 
     -- Money
-    draw.SimpleText("Class: " .. LocalPlayer():GetHordeClass().name, 'Heading', 10, 24, color_white, TEXT_ALIGN_LEFT, TEXT_ALIGN_CENTER)
+    draw.SimpleText("Class: " .. LocalPlayer():GetHordeClass().loc_name, 'Heading', 10, 24, color_white, TEXT_ALIGN_LEFT, TEXT_ALIGN_CENTER)
     if LocalPlayer():GetHordeClass().name == "Heavy" then
         draw.SimpleText("Cash: " .. tostring(LocalPlayer():GetHordeMoney()) .. '$ Weight: [' .. tostring(HORDE.max_weight + 5 - LocalPlayer():GetHordeWeight()) .. "/" .. HORDE.max_weight + 5 .. "]", 'Heading', self:GetWide() - 40, 24, color_white, TEXT_ALIGN_RIGHT, TEXT_ALIGN_CENTER)
     else

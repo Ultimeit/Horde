@@ -1,6 +1,6 @@
 -- Class
 HORDE.classes = {}
-HORDE.CreateClass = function(name, fixed_description, extra_description, max_hp, movespd, sprintspd, perks)
+HORDE.CreateClass = function(name, fixed_description, extra_description, max_hp, movespd, sprintspd, perks, loc_name)
     if name == nil or name == "" then return end
     local class = {}
     class.name = name
@@ -10,6 +10,7 @@ HORDE.CreateClass = function(name, fixed_description, extra_description, max_hp,
     class.movespd = movespd
     class.sprintspd = sprintspd
     class.perks = perks
+    class.loc_name = loc_name or name
     HORDE.classes[class.name] = class
 end
 -- Only allow 1 change per wave
@@ -24,7 +25,8 @@ HORDE.CreateClasses = function()
         GetConVar("horde_base_walkspeed"):GetInt(),
         GetConVar("horde_base_runspeed"):GetInt(),
         {L = "25% less damage taken.",
-        R = "25% increased damage."}
+        R = "25% increased damage."},
+        "Выживший"
     )
 
     HORDE.CreateClass(
@@ -35,7 +37,8 @@ HORDE.CreateClasses = function()
         GetConVar("horde_base_walkspeed"):GetInt(),
         GetConVar("horde_base_runspeed"):GetInt(),
         {L = "50% increased maximum health.",
-        R = "Adds 25 Poison damage to each attack."}
+        R = "Adds 25 Poison damage to each attack."},
+        "Медик"
     )
 
     HORDE.CreateClass(
@@ -46,7 +49,8 @@ HORDE.CreateClasses = function()
         GetConVar("horde_base_walkspeed"):GetInt(),
         GetConVar("horde_base_runspeed"):GetInt(),
         {L = "50% increased explosive damage",
-        R = "Enemies you kill explode,\ndealing (100 + 10% of their health) as AOE damage."}
+        R = "Enemies you kill explode,\ndealing (100 + 10% of their health) as AOE damage."},
+        "Пиротехник"
     )
 
     HORDE.CreateClass(
@@ -57,7 +61,8 @@ HORDE.CreateClasses = function()
         GetConVar("horde_base_walkspeed"):GetInt() * 1.25,
         GetConVar("horde_base_runspeed"):GetInt() * 1.25,
         {L = "25% chance to not consume ammo while firing.",
-        R = "Each enemy you kill grants you 1 Frenzy charge.\nEach frenzy charge increases your damage and movespeed by 6%."}
+        R = "Each enemy you kill grants you 1 Frenzy charge.\nEach frenzy charge increases your damage and movespeed by 6%."},
+        "Штурмовик"
     )
 
     HORDE.CreateClass(
@@ -68,7 +73,8 @@ HORDE.CreateClasses = function()
         GetConVar("horde_base_walkspeed"):GetInt(),
         GetConVar("horde_base_runspeed"):GetInt(),
         {L = "Damage does not bypass Armor.",
-        R = "Enemies you hit are Pressured for 1 second.\nPressured enemies deal 25% less damage and take 25% increased damage."}
+        R = "Enemies you hit are Pressured for 1 second.\nPressured enemies deal 25% less damage and take 25% increased damage."},
+        "Тяжеловес(?)"
     )
 
     HORDE.CreateClass(
@@ -79,7 +85,8 @@ HORDE.CreateClasses = function()
         GetConVar("horde_base_walkspeed"):GetInt(),
         GetConVar("horde_base_runspeed"):GetInt(),
         {L = "100% increased damage with single shot weapons.",
-        R = "Headshot damage stacks,\ndealing 10% increased damage each stack."}
+        R = "Headshot damage stacks,\ndealing 10% increased damage each stack."},
+        "Призрак"
     )
 
     HORDE.CreateClass(
@@ -90,7 +97,8 @@ HORDE.CreateClasses = function()
         GetConVar("horde_base_walkspeed"):GetInt(),
         GetConVar("horde_base_runspeed"):GetInt(),
         {L = "",
-        R = ""}
+        R = ""},
+        "Инженер"
     )
 end
 
